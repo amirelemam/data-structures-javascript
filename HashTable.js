@@ -7,7 +7,7 @@ class HashTable {
   hash(string) {
     let value = 0;
     for (let i = 0; i < string.length; i++) {
-      value += string.chatCodeAt(i);
+      value += string.charCodeAt(i);
     }
     return value % this.size;
   }
@@ -36,7 +36,10 @@ class HashTable {
 
   remove(key) {
     const index = HashTable.hash(key);
-    if (this.storage[index].length === 1 && this.storage[index][0][0] === key) {
+    if (
+      this.storage[index]?.length === 1 &&
+      this.storage[index][0][0] === key
+    ) {
       delete this.storage[index];
     } else {
       for (let i = 0; i < this.storage[index].length; i++) {
