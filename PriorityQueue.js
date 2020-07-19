@@ -3,6 +3,10 @@ class PriorityQueue {
     this.content = [];
   }
 
+  isEmpty() {
+    return this.content.length === 0;
+  }
+
   enqueue(element) {
     if (this.isEmpty()) {
       this.content.push(element);
