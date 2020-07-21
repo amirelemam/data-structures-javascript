@@ -35,11 +35,9 @@ class HashTable {
   }
 
   remove(key) {
-    const index = HashTable.hash(key);
-    if (
-      this.storage[index]?.length === 1 &&
-      this.storage[index][0][0] === key
-    ) {
+    const index = this.hash(key);
+    if (this.storage[index] === undefined) return;
+    if (this.storage[index].length === 1 && this.storage[index][0][0] === key) {
       delete this.storage[index];
     } else {
       for (let i = 0; i < this.storage[index].length; i++) {
@@ -51,7 +49,7 @@ class HashTable {
   }
 
   lookup(key) {
-    const index = HashTable.hash(key);
+    const index = this.hash(key);
     if (this.storage[index] === undefined) {
       return undefined;
     } else {
